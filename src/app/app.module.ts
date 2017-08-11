@@ -3,6 +3,11 @@ import { FormsModule } from "@angular/forms";
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { environment } from "../environments/environment";
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+
 import { MdButtonModule, MdToolbarModule, MdInputModule } from "@angular/material";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -21,6 +26,9 @@ import { TasksComponent } from './tasks/tasks.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     FlexLayoutModule,
     MdButtonModule,
     MdInputModule,
