@@ -14,6 +14,7 @@ import { MdButtonModule, MdToolbarModule, MdInputModule } from "@angular/materia
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AuthService } from "./services/auth.service";
+import { TasksService } from "./services/tasks.service";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -47,7 +48,8 @@ const routes: Routes = [
     MdToolbarModule,
   ],
   providers: [
-    AuthService
+    AuthService,
+    TasksService
   ],
   bootstrap: [AppComponent]
 })
