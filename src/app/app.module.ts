@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Routes, RouterModule } from "@angular/router";
 
 import { environment } from "../environments/environment";
 import { AngularFireModule } from "angularfire2";
@@ -20,6 +21,10 @@ import { TasksComponent } from './tasks/tasks.component';
 import { LoginComponent } from './login/login.component';
 
 
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: '', component: TasksComponent }
+]
 
 @NgModule({
   declarations: [
@@ -32,6 +37,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
