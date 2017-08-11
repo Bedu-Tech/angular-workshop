@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MdButtonModule, MdToolbarModule, MdInputModule } from "@angular/material";
 
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 
@@ -13,9 +14,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    FlexLayoutModule,
     MdButtonModule,
     MdInputModule,
     MdToolbarModule,
