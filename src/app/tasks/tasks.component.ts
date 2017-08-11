@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FirebaseListObservable } from "angularfire2/database";
+
+import { TasksService } from "../services/tasks.service";
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -8,27 +12,23 @@ import { Component, OnInit } from '@angular/core';
 export class TasksComponent implements OnInit {
 
   private taskText: string;
-  private tasks: any[] = [
-    { text: 'Tarea 01', done: false },
-    { text: 'Tarea 02', done: false }
-  ]
 
-  constructor() { }
+  constructor(private taskService: TasksService) { }
 
   ngOnInit() {
   }
 
   addTask(): void{
-    this.tasks.push({ text: this.taskText, done: false });
+    this.taskService.tasks.push({text: this.taskText, done: false});
     this.taskText = "";
   }
 
-  toggleTask(index): void{
-    this.tasks[index].done = !this.tasks[index].done;
+  toggleTask(index, taskStatus): void{
+    this.taskService.tasks.update(index, { done: !taskStatus });
   }
 
   deleteTask(index): void{
-    this.tasks.splice(index, 1);
+    this.taskService.tasks.remove(index);
   }
 
 }

@@ -10,14 +10,14 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <ul fxLayout="column" fxFlex="60" class="task-list">
     <li fxLayout="row" fxLayoutAlign="space-around" 
-      *ngFor="let task of tasks; index as index">
+      *ngFor="let task of taskService.tasks | async; index as index">
       <div [ngStyle]="{ opacity: !task.done ? 1:.2, textDecoration: !task.done ? 'none':'line-through'}">
-        {{ task.text }} - {{ task.done }}
+        {{ task.text }}
       </div>
       <div>
-        <i *ngIf="!task.done" class="fa fa-check" (click)="toggleTask(index)"></i>
+        <i *ngIf="!task.done" class="fa fa-check" (click)="toggleTask(task.$key, task.done)"></i>
         &nbsp;
-        <i class="fa fa-trash" (click)="deleteTask(index)"></i>
+        <i class="fa fa-trash" (click)="deleteTask(task.$key)"></i>
       </div>
     </li>
   </ul>
