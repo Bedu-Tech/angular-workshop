@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<div fxLayout="row" fxLayoutAlign="center" style="margin-top: 2rem;">
+  <md-input-container fxLayout="column" fxFlex="60">
+    <input mdInput placeholder="Add task..."
+      (keyup.enter)="addTask()" [(ngModel)]="taskText">
+  </md-input-container>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center">
+  <ul fxLayout="column" fxFlex="60" class="task-list">
+    <li fxLayout="row" fxLayoutAlign="space-around" 
+      *ngFor="let task of tasks; index as index">
+      <div [ngStyle]="{ opacity: !task.done ? 1:.2, textDecoration: !task.done ? 'none':'line-through'}">
+        {{ task.text }} - {{ task.done }}
+      </div>
+      <div>
+        <i *ngIf="!task.done" class="fa fa-check" (click)="toggleTask(index)"></i>
+        &nbsp;
+        <i class="fa fa-trash" (click)="deleteTask(index)"></i>
+      </div>
+    </li>
+  </ul>
+</div>
