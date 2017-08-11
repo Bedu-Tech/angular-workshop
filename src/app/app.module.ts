@@ -12,6 +12,8 @@ import { MdButtonModule, MdToolbarModule, MdInputModule } from "@angular/materia
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { AuthService } from "./services/auth.service";
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -34,7 +36,9 @@ import { TasksComponent } from './tasks/tasks.component';
     MdInputModule,
     MdToolbarModule,
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
